@@ -16,7 +16,7 @@ class SessionsController < Clearance::SessionsController
         merge(email: user.email)
     end
 
-    def user # the user right now is whoever matches the params from login. 
+    def user # i.e. current user. Guest.new is to handle nulls (see Guest class)
         User.where(email: email_or_username).or(User.where(username: email_or_username)).first || Guest.new
     end
 

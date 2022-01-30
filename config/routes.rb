@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  # routing constraint provided by Clearance
+  constraints Clearance::Constraints::SignedIn.new do 
+    root to: "dashboards#show"
+  end
+  
   root to: "homes#show"
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, only: [:create]

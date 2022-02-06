@@ -11,6 +11,7 @@ class ShoutsController < ApplicationController
 
     private
     def shout_params
+        { content: content_from_params}
         params.require(:shout).permit(:body)
     end
 
